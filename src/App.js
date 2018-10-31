@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
-import Ninjas from './Ninjas'
-import AddNinja from './AddNinja'
+import Todos from './Todos'
 class App extends Component {
   state = {
-    ninjas: [
-      {name: "Ryu", age: 25, belt: "black", id: 1},
-      {name: "matchMedia", age: 42, belt: "red", id: 2},
-      {name: "trololo", age: 20, belt: "green", id: 3}
+    todos: [
+      {id: 1, content: 'buy some milk'},
+      {id: 2, content: 'play mario kart'}
     ]
   }
-  addNinja = (ninja) => {
-    ninja.id = Math.random()
-    let ninjas = [...this.state.ninjas, ninja]
+  deleteTodo = (id) => {
+    let todos = this.state.todos.filter(todo => todo.id !== id)
     this.setState({
-      ninjas
-    })
-  }
-  deleteNinja = (id) => {
-    let ninjas = this.state.ninjas.filter(ninja => ninja.id !== id)
-    this.setState({
-      ninjas
+      todos
     })
   }
   render() {
     return (
-      <div className="App">
-        <h1>My first React App</h1>
-        <p>Welcome!</p>
-        <Ninjas deleteNinja={ this.deleteNinja } ninjas={ this.state.ninjas } />
-        <AddNinja  addNinja={ this.addNinja }/>
+      <div className="todo-app container">
+        <h1 className="center blue-text">
+          Todo's
+        </h1>
+        <Todos deleteTodo={ this.deleteTodo } todos={ this.state.todos }/>
       </div>
     );
   }
