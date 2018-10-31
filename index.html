@@ -17,14 +17,15 @@
                 name: 'Ryu',
                 age: 30
             }
-            handleClick(e){
-                //console.log(e.target)
-                console.log(this.state)
+            handleClick = (e) => {
+                this.setState({
+                    age: this.state.age + 5
+                })
             }
-            handleMouseOver(e){
+            handleMouseOver = (e) => {
                 console.log(e.target, e.pageX)
             }
-            handleCopy(e){
+            handleCopy = (e) => {
                 console.log('try to be original!')
             }
             render() {
