@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Ninjas = ({ninjas}) => {
-    const ninjaList = ninjas.map(ninja => {
+    const ninjaList = ninjas.filter(ninja => ninja.age > 19).map(ninja => {
         return (
             <div className="ninja" key={ ninja.id }>
                 <div>Name: { ninja.name }</div>

@@ -4,7 +4,8 @@ class App extends Component {
   state = {
     ninjas: [
       {name: "Ryu", age: 25, belt: "black", id: 1},
-      {name: "matchMedia", age: 42, belt: "red", id: 2}
+      {name: "matchMedia", age: 42, belt: "red", id: 2},
+      {name: "trololo", age: 20, belt: "green", id: 3}
     ]
   }
   render() {
