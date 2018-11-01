@@ -1,6 +1,7 @@
 import React from 'react'
 
-const About = () => {
+const About = (props) => {
+    
     return (
         <div className="container">
             <h4 className="center">This is the About page</h4>
