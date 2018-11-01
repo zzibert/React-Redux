@@ -1,33 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { connect } from 'react-redux'
 
 class Post extends Component{
-    state = {
-        id: null,
-        post: null
-    }
-    componentDidMount(){
-        let id = this.props.match.params.post_id
-        axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
-        .then(res => {
-            this.setState({
-                post: res.data
-            })
-        })
-        this.setState({
-            id
-        })
-    }
     
     render(){
-        let post = this.state.post ? (
-            <div className="post card" key={ this.state.post.id }>
+        let post = this.props.post ? (
+            <div className="post card" key={ this.props.post.id }>
                 <div className="card-content">
-                    <Link to={ '/' + this.state.post.id }>
-                        <span className="card-title">{ this.state.post.title }</span>
+                    <Link to={ '/' + this.props.post.id }>
+                        <span className="card-title">{ this.props.post.title }</span>
                     </Link>
-                    <p>{ this.state.post.body }</p>
+                    <p>{ this.props.post.body }</p>
                 </div>
             </div>
         ) : (
@@ -41,4 +25,11 @@ class Post extends Component{
     }
 }
 
-export default Post
+const mapStateToProps = (state, ownProps) => {
+    let id = ownProps.match.params.post_id
+    return {
+        post: state.posts.find(post => post.id === id)
+    }
+}
+
+export default connect(mapStateToProps)(Post)
