@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { deletePost } from '../actions/postActions'
 
 class Post extends Component{
     handleClick = () =>{
@@ -43,7 +44,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deletePost: id => { dispatch({type: 'DELETE_POST', id: id})}
+        deletePost: id => { dispatch(deletePost(id))}
     }
 }
 
